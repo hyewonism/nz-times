@@ -4,7 +4,7 @@ let news = [];
 const getLatestNews = async () => {
   const url = new URL(
     // `https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`
-    `http://times-node-env.eba-appvq3ef.ap-northeast-2.elasticbeanstalk.com/top-headlines`
+    `https://curious-piroshki-943f87.netlify.app/top-headlines?q=${keyword}&country=kr&pageSize=${PAGE_SIZE}`
   );
   const response = await fetch(url);
   const data = await response.json();
