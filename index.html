@@ -10,31 +10,46 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
     <link rel="stylesheet" href="style.css" />
+
     <title>Document</title>
   </head>
   <body>
+    <p>
+      <div class="menu__togleBtn">
+        <a href="#">
+          <i class="fas fa-bars"></i>
+        </a>
+      </div>
+    </p>
+
     <section class="container">
-      <section class="entire-menu">
-        <div class="head-line">
-          <img id="logo" src="image/logo.JPG" alt="" />
+      <div class="head-line">
+        <img id="logo" src="image/logo.JPG" alt="" />
+        <div class="search-box">
+          <a href="#" id="search-icon" onclick="toggleSearchBox()"><i class="fa-solid fa-magnifying-glass"></i></a>
+          <div id="search-input">
+            <input id="input-area" type="text">
+            <button onclick="getNewsByKeyword()">검색</button>
+          </div>
         </div>
-        <div class="menus">
-          <button>Sport</button>
-          <button>Tech</button>
-          <button>World</button>
-          <button>Finance</button>
-          <button>Politics</button>
-          <button>Business</button>
-          <button>Economics</button>
-          <button>Entertainment</button>
-          <button>Beauty</button>
-          <button>Travel</button>
-          <button>Music</button>
-          <button>Food</button>
-          <button>Science</button>
-          <button>Gaming</button>
-          <button>Energy</button>
+      </div>
+
+      <section class="entire-menu">
+        <div class="menu-bar">
+          <div class="menus">
+            <button>Business</button>
+            <button>Entertainment</button>
+            <button>General</button>
+            <button>Health</button>
+            <button>Science</button>
+            <button>Sports</button>
+            <button>Technology</button>
+          </div>
         </div>
       </section>
       <section class="first-part">
