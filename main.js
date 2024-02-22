@@ -14,8 +14,8 @@ toggleBtn.addEventListener("click", () => {
 
 const getLatestNews = async () => {
   const url = new URL(
-    `https://newsapi.org/v2/top-headlines?country=kr&apiKey=${API_KEY}&page=2`
-    // `https://curious-piroshki-943f87.netlify.app/top-headlines?country=kr&apiKey=${API_KEY}`
+    // `https://newsapi.org/v2/top-headlines?country=kr&apiKey=${API_KEY}&page=2`
+    `https://curious-piroshki-943f87.netlify.app/top-headlines?country=kr&apiKey=${API_KEY}`
   );
   const response = await fetch(url);
   const data = await response.json();
@@ -27,7 +27,8 @@ const getNewsByCategory = async (event) => {
   const category = event.target.textContent.toLowerCase();
   console.log("category", category);
   const url = new URL(
-    `https://newsapi.org/v2/top-headlines?country=kr&category=${category}&apiKey=${API_KEY}`
+    // `https://newsapi.org/v2/top-headlines?country=kr&category=${category}&apiKey=${API_KEY}`
+    `https://curious-piroshki-943f87.netlify.app/top-headlines?country=kr&category=${category}&apiKey=${API_KEY}`
   );
   const response = await fetch(url);
   const data = await response.json();
@@ -40,7 +41,8 @@ const getNewsByKeyword = async () => {
   const keyword = document.getElementById("input-area").value;
   console.log("keyword", keyword);
   const url = new URL(
-    `https://newsapi.org/v2/top-headlines?country=kr&q=${keyword}&apiKey=${API_KEY}`
+    // `https://newsapi.org/v2/top-headlines?country=kr&q=${keyword}&apiKey=${API_KEY}`
+    `https://curious-piroshki-943f87.netlify.app/top-headlines?country=kr&q=${keyword}&apiKey=${API_KEY}`
   );
 
   const response = await fetch(url);
