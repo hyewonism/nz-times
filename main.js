@@ -12,45 +12,54 @@ toggleBtn.addEventListener("click", () => {
   menu_bar.classList.toggle("active");
 });
 
+let url = new URL(
+  // `https://newsapi.org/v2/top-headlines?country=nz&apiKey=${API_KEY}&page=2`
+  `https://curious-piroshki-943f87.netlify.app/top-headlines?country=kr&apiKey=${API_KEY}`
+);
+
+const getNews = async () => {
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    if (response.status === 200) {
+      if (data.articles.length === 0) {
+        throw new Error("No result for this search");
+      }
+      newsList = data.articles;
+      render();
+    } else {
+      throw new Error(data.message);
+    }
+  } catch (error) {
+    errorRender(error.message);
+  }
+};
+
 const getLatestNews = async () => {
-  const url = new URL(
-    // `https://newsapi.org/v2/top-headlines?country=kr&apiKey=${API_KEY}&page=2`
+  url = new URL(
+    // `https://newsapi.org/v2/top-headlines?country=nz&apiKey=${API_KEY}&page=2`
     `https://curious-piroshki-943f87.netlify.app/top-headlines?country=kr&apiKey=${API_KEY}`
   );
-  const response = await fetch(url);
-  const data = await response.json();
-  newsList = data.articles;
-  render();
+  getNews();
 };
 
 const getNewsByCategory = async (event) => {
   const category = event.target.textContent.toLowerCase();
-  console.log("category", category);
-  const url = new URL(
-    // `https://newsapi.org/v2/top-headlines?country=kr&category=${category}&apiKey=${API_KEY}`
+  url = new URL(
+    // `https://newsapi.org/v2/top-headlines?country=nz&category=${category}&apiKey=${API_KEY}`
     `https://curious-piroshki-943f87.netlify.app/top-headlines?country=kr&category=${category}&apiKey=${API_KEY}`
   );
-  const response = await fetch(url);
-  const data = await response.json();
-  console.log("ddd", data);
-  newsList = data.articles;
-  render();
+  getNews();
 };
 
 const getNewsByKeyword = async () => {
   const keyword = document.getElementById("input-area").value;
-  console.log("keyword", keyword);
-  const url = new URL(
-    // `https://newsapi.org/v2/top-headlines?country=kr&q=${keyword}&apiKey=${API_KEY}`
+  url = new URL(
+    // `https://newsapi.org/v2/top-headlines?country=nz&q=${keyword}&apiKey=${API_KEY}`
     `https://curious-piroshki-943f87.netlify.app/top-headlines?country=kr&q=${keyword}&apiKey=${API_KEY}`
   );
 
-  const response = await fetch(url);
-  const data = await response.json();
-  console.log("keyword data", data);
-
-  newsList = data.articles;
-  render();
+  getNews();
 };
 
 const render = () => {
@@ -76,6 +85,14 @@ const render = () => {
       renderMiddleSection(newsList.slice(1));
     }
   }
+};
+
+const errorRender = (errorMessage) => {
+  const errorHTML = `<div class="alert alert-danger" role="alert">
+    ${errorMessage}
+  </div>`;
+
+  document.getElementById("news-board").innerHTML = errorHTML;
 };
 
 const renderFirstSection = (firstNews) => {
