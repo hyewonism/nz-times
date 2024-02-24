@@ -211,7 +211,7 @@ body {
 }
 
 /* hamburger menu */
-.menu__togleBtn {
+.menu__toggleBtn {
   display: none;
   position: absolute;
   top: 25px;
@@ -219,7 +219,7 @@ body {
   z-index: 1000;
 }
 
-.menu__togleBtn i {
+.menu__toggleBtn i {
   color: white;
   font-size: 25px;
 }
@@ -235,7 +235,7 @@ body {
     width: 100%;
   }
 
-  .menu__togleBtn {
+  .menu__toggleBtn {
     display: block;
   }
 
