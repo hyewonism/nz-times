@@ -17,6 +17,7 @@ body {
 #logo {
   width: 450px;
   height: 90px;
+  max-width: 100%;
   background-color: white;
   position: relative;
 }
